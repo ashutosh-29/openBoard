@@ -1,0 +1,86 @@
+body {
+    margin: 0px;
+    text-align: center;
+    overflow: hidden;
+    font-family: sans-serif;
+}
+
+.fas {
+    font-size: 2rem;
+    margin-right: 30px;
+    margin-left: 30px;
+}
+.menu{
+    position: absolute;
+    height: 60px;
+    width: 100%;
+    padding-top: 20px;
+    padding-bottom: 10px;
+    background-color: #EEF2FF;
+    color: #1A374D;
+    justify-content: space-evenly;
+    text-align: left;
+    align-items: center;
+    display: flex;
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px;
+    cursor: pointer;
+    font-size:larger;
+    animation-name: menuAni;
+    animation-duration: 0.5s;
+}
+@keyframes menuAni {
+    0%   {transform:scale(0);}
+    100% {transform:scale(1);}
+  }
+.vl {
+    border-left: 3px solid #406882;
+    height: 50px;
+  }
+.stickyNotesContainer{
+    position: absolute;
+    width: 200px;
+    height: 260px;
+    left: 20rem;
+    top: 10rem;
+}
+.stickyNotesHeader{
+    width: 100%;
+    height: 10%;
+    border: 2px solid pink;
+    justify-content: end;
+    align-items: center;
+    display: flex;
+    border-radius: 10px 10px 0 0;
+}
+
+.stickyCross{
+    margin-right: 5px;
+    color: red;
+    cursor: pointer;
+}
+.stickyMinimise{
+    margin-right: 5px;
+    color: green;
+    cursor: pointer;
+}
+.stickyContentArea{
+    height: 90%;
+    width: 100%;
+    border: 2px solid pink;
+    border-radius:  0 0 10px 10px;
+}
+.stickyContentArea img{
+    height: 100%;
+    width: 100%;
+    
+}
+.stickyTextArea{
+    height: 97.5%;
+    width: 96.5%;
+    resize: none;
+    margin: 0;
+    border-radius:  0 0 10px 10px;
+}
+canvas{
+    background-color: white;
+}
