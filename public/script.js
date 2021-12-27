@@ -1,18 +1,20 @@
+let menuItem=document.querySelector(".menuItems");
 let menu=document.querySelector(".menu");
 let expand=document.querySelector(".expandTool");
 let contract=document.querySelector(".contractTool");
 
 expand.addEventListener("click",
     function(){
-        menu.style.display="flex";
-        contract.style.display="flex";
+        menuItem.style.display="inline-block";
+        contract.style.display="inline-block";
         expand.style.display="none";
+        console.log(expand);
     });
 contract.addEventListener("click",
     function(){
-        menu.style.display="none";
+        menuItem.style.display="none";
         contract.style.display="none";
-        expand.style.display="flex";
+        expand.style.display="inline-block";
     });
 
 let downloadFileBtn=document.querySelector(".downloadFile");
@@ -30,7 +32,6 @@ stickyNotesBtn.addEventListener("click",
         div.setAttribute('class','stickyNotesContainer');
         div.innerHTML=`<div class="stickyNotesHeader"><span class="material-icons-outlined stickyMinimise">remove_circle_outline</span><span class="material-icons-outlined stickyCross">cancel</span></div><div class="stickyContentArea"><textarea class="stickyTextArea" ></textarea></div>`;
         document.querySelector('body').append(div);
-        
         let minimiseBtn=div.querySelector(".stickyMinimise");
         let isMinimise=false;
         minimiseBtn.addEventListener('click',()=>{
@@ -50,10 +51,6 @@ stickyNotesBtn.addEventListener("click",
         });
         dragAndDrop(div);
     });
-
-
-
-
     let stickyImageBtn=document.querySelector(".stickyImageBtn");
     stickyImageBtn.addEventListener("click",
         function(){
@@ -68,7 +65,6 @@ stickyNotesBtn.addEventListener("click",
             div.setAttribute('class','stickyNotesContainer');
             div.innerHTML=`<div class='stickyNotesHeader'><span class='material-icons-outlined stickyMinimise'>remove_circle_outline</span><span class='material-icons-outlined stickyCross'>cancel</span></div><div class='stickyContentArea'><img src='${url}'></div>`;
             document.querySelector('body').append(div);
-            
             let minimiseBtn=div.querySelector(".stickyMinimise");
             let isMinimise=false;
             minimiseBtn.addEventListener('click',()=>{
@@ -88,13 +84,10 @@ stickyNotesBtn.addEventListener("click",
             });
             dragAndDrop(div);
             });
-            
         });
-
-
-
-
-
+menu.addEventListener('click',()=>{
+    dragAndDrop(menu);
+})
 function dragAndDrop(div){
     div.onmousedown = function(event) {
         let shiftX = event.clientX - div.getBoundingClientRect().left;

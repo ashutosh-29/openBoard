@@ -4,7 +4,7 @@ let headerHeight=document.querySelector(".headerDiv").offsetHeight;
 let canvas=document.querySelector("canvas");
 let colorPlate=document.querySelectorAll(".colorAll");
 let sizeInput=document.querySelector(".sizeTool input");
-
+canvas.style.background='white';
 canvas.height=window.screen.height;
 canvas.width=window.screen.width;
 
@@ -34,9 +34,13 @@ document.querySelector('.circ').addEventListener('click',()=>{
 document.querySelector('.line').addEventListener('click',()=>{
     curTool='line';
 });
+document.querySelector('.fillColor').addEventListener('click',()=>{
+    curTool='fillColor';
+});
 colorPlate.forEach(function(item,idx,arr){
     item.addEventListener("click",(e)=>{
         penColor=item.style.backgroundColor;
+        document.querySelector('.currentColor').style.backgroundColor=penColor;
         console.log(penColor);
         });
     });
@@ -47,6 +51,7 @@ sizeInput.addEventListener('change',(e)=>{
 canvas.addEventListener('mousedown',(e)=>{
     iX=e.clientX;
     iY=e.clientY;
+    eraserColor=canvas.style.background;
     let data={
         x:e.clientX,
         y:e.clientY,
@@ -54,9 +59,7 @@ canvas.addEventListener('mousedown',(e)=>{
         eraserColor:eraserColor,
         penSize:penSize
     }
-    
     socket.emit("beginPath",data)
-    
 });
 canvas.addEventListener('mousemove',(e)=>{
     if(isDraw ){
@@ -117,14 +120,24 @@ function setContent(data){
     }
 }
 function beginPath(data){
-    tool.beginPath();
-    if(curTool!='eraser')tool.strokeStyle=data.penColor;
-    else tool.strokeStyle=data.eraserColor;
-    if(curTool=='pencil'|| curTool=='eraser' || curTool=='line'){
-        if(curTool!='line')isDraw=true;
-        tool.moveTo(data.x,data.y-headerHeight);
+    if(curTool=='fillColor'){
+        tool.clearRect(0,0,canvas.width,canvas.height);
+        canvas.style.background=penColor;
     }
-    tool.lineWidth=data.penSize;
+    else{
+        tool.beginPath();
+        if(curTool!='eraser')tool.strokeStyle=data.penColor;
+        else {
+            data.eraserColor=canvas.style.background;
+            tool.strokeStyle=data.eraserColor;
+        }
+        if(curTool=='pencil'|| curTool=='eraser' || curTool=='line'){
+            if(curTool!='line')isDraw=true;
+            tool.moveTo(data.x,data.y-headerHeight);
+        }
+        tool.lineWidth=data.penSize;
+    }
+    
 }
 function drawStroke(data){
     tool.lineTo(data.x,data.y-headerHeight);

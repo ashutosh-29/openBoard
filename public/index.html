@@ -1,126 +1,102 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OurOpenBoard</title>
     <link rel="stylesheet" href="favicon.ico" type="image/x-icon">
-    <title>SMD</title>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Pushster&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
-
 <body>
     <div>
-    <div class="headerDiv" style="padding-top:10px; padding-bottom: 10px; background-color: #EEF2FF;">
-        <div style='float:left;'>
-            <div class="expandTool" style="display: flex; cursor: pointer;">
-                <span class="material-icons-outlined">
-                    expand_more
-                </span>
-            </div>
-            <div class="contractTool" style="display: none; cursor: pointer;">
-                <span class="material-icons-outlined">
-                    expand_less
-                </span>
-            </div>
+    <div class="headerDiv" >
+        <div style="position: fixed; left: 0; padding-left: 20px; "> 
+            <h1 >Our Open Board</h1>
         </div>
-        <h2 style="display: inline-block;margin: 0;">Welcome to Stroke Me Daddy</h2>
-    </div>
-        
-        <div class="menu" style="display: none;">
-            <div class="fileTool commonTool">
+        <div class="headerItems">
+            <div >
                 <span class="material-icons-outlined downloadFile">
                     save
                 </span>
-                <br>
+            </div>
+            <div>
                 <span class="material-icons-outlined undo">
                     undo
                 </span>
                 <span class="material-icons-outlined redo">
                     redo
                 </span>
-            </div>
-            <div class="vl"></div>
-            <div class="clipBoard commonTool">
-                <span class="material-icons-outlined">
-                    content_cut
-                </span>
-                <span class="material-icons-outlined">
-                    content_copy
-                </span>
-                <br>
-                <span class="material-icons-outlined">
-                    content_paste
-                </span>
-            </div>
-            <div class="vl"></div>
-            <div class="imageTool commonTool">
-                <span class="material-icons-outlined stickyImageBtn">
-                    image
-                </span>
-                <span class="material-icons-outlined">
-                    flip
-                </span><br>
-                <span class="material-icons-outlined">
-                    screen_rotation
-                </span>
-                <span class="material-icons-outlined stickyNotesBtn">
-                    sticky_note_2
-                </span>
-            </div>
-            <div class="vl"></div>
-            <div class="tool commonTool">
-                <span class="material-icons-outlined pencil">
-                    mode_edit
-                </span>
-                <span class="material-icons-outlined eraser">
-                    bento
-                </span><br>
-                <span class="material-icons-outlined">
-                    text_format
-                </span>
-                <span class="material-icons-outlined">
-                    format_color_fill
-                </span>
-            </div>
-            <div class="vl"></div>
+            </div>     
             <div class="sizeTool commonTool">
-                <input type="range" name="vol" min="1" max="25" value="1" style="width: 90%; ">
+                <input type="range" name="vol" min="1" max="25" value="1" class="slider">
             </div>
-            <div class="vl"></div>
-            <div class="shapeTool commonTool"> 
-                <span class="material-icons-outlined line">
-                    show_chart
-                </span>
-                <span class="material-icons-outlined rect">
-                    rectangle
-                </span><br>
-                <span class="material-icons-outlined circ">
-                    circle
-                </span>
+            <div style="display: flex; height: 25px; width: 25px; border-radius: 50%; border:2px solid #112031;align-items: center;text-align: center; justify-content: center;">
+                <div class="currentColor" style="display: inline-block; height: 20px; width: 20px; border-radius: 50%; background-color: black;"></div>
             </div>
-            <div class="vl"></div>
             <div class="colorTool">
-                <div class="colorAll" style="display: inline-block; height: 20px; width: 20px; border-radius: 50%; background-color: black;"></div>
-                <div class="colorAll" style="display: inline-block; height: 20px; width: 20px; border-radius: 50%; background-color: red;"></div>
+                <div class="colorAll" style="display: inline-block; height: 20px; width: 20px; border-radius: 50%; background-color: red; "></div>
                 <div class="colorAll" style="display: inline-block;height: 20px; width: 20px; border-radius: 50%; background-color: blue;"></div>
                 <div class="colorAll" style="display: inline-block;height: 20px; width: 20px; border-radius: 50%; background-color: green;"></div>
-                <br>
-                <div class="colorAll" style="display: inline-block;height: 20px; width: 20px; border-radius: 50%; background-color: gray;"></div>
                 <div class="colorAll" style="display: inline-block; height: 20px; width: 20px; border-radius: 50%; background-color: yellow;"></div>
                 <div class="colorAll" style="display: inline-block;height: 20px; width: 20px; border-radius: 50%; background-color: orangered;"></div>
                 <div class="colorAll" style="display: inline-block;height: 20px; width: 20px; border-radius: 50%; background-color: purple;"></div>
-
+                <div class="colorAll" style="display: inline-block; height: 20px; width: 20px; border-radius: 50%; background-color: black;"></div>
             </div>
         </div>
-        
+    </div> 
+        <div class="menu" >
+            <div >
+                <div class="expandTool" style="display: inline-block; cursor: pointer;">
+                    <span class="material-icons-outlined">
+                        expand_more
+                    </span>
+                </div>
+                <div class="contractTool" style="display: none; cursor: pointer;">
+                    <span class="material-icons-outlined">
+                        expand_less
+                    </span>
+                </div>
+            </div>
+            <div class="menuItems" style="display: none;">
+                <div class="tool commonTool">
+                    <span class="material-icons-outlined pencil" >
+                        mode_edit
+                    </span>
+                    <span class="material-icons-outlined eraser">
+                        bento
+                    </span><br>
+                    <span class="material-icons-outlined fillColor">
+                        format_color_fill
+                    </span>
+                </div>
+                <div class="imageTool commonTool">
+                    <span class="material-icons-outlined stickyImageBtn">
+                        image
+                    </span>
+                    <span class="material-icons-outlined stickyNotesBtn">
+                        sticky_note_2
+                    </span>
+                </div>
+                
+                <div class="shapeTool commonTool"> 
+                    <span class="material-icons-outlined line">
+                        show_chart
+                    </span>
+                    <span class="material-icons-outlined rect">
+                        rectangle
+                    </span><br>
+                    <span class="material-icons-outlined circ">
+                        circle
+                    </span>
+                </div>
+            </div>   
+        </div>
         <canvas></canvas>
     </div>
 </body>
-<!-- html js inject-->
 <script src="https://cdn.socket.io/4.4.0/socket.io.min.js" integrity="sha384-1fOn6VtTq3PWwfsOrk45LnYcGosJwzMHv+Xh/Jx5303FVOXzEnw0EpLv30mtjmlj" crossorigin="anonymous"></script>
 <script>let socket=io.connect('https://ouropenboard.herokuapp.com/')</script>
 <script src="script.js"></script>

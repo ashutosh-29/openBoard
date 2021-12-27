@@ -2,29 +2,75 @@ body {
     margin: 0px;
     text-align: center;
     overflow: hidden;
-    font-family: sans-serif;
+    font-family: 'Pushster', cursive;
 }
-
 .fas {
     font-size: 2rem;
     margin-right: 30px;
     margin-left: 30px;
 }
+.slider {
+    -webkit-appearance: none; 
+    appearance: none;
+    width: 98%; 
+    height: 25px; 
+    background: #112031;
+    outline: none; 
+    opacity: 0.7; 
+    -webkit-transition: .2s; 
+    transition: opacity .2s;
+    border-radius: 10px;
+    padding-left: 3px;
+    padding-right: 3px;
+  }
+  .slider::-webkit-slider-thumb {
+    -webkit-appearance: none; 
+    appearance: none;
+    width: 20px; 
+    height: 20px; 
+    background: #EEEEEE; 
+    cursor: pointer;
+    border-radius: 50%;
+  }
+.headerDiv{
+    display: flex;
+    padding-top:20px; 
+    padding-bottom: 10px; 
+    padding-right: 10px; 
+    justify-content: right;
+    color: #112031;
+    align-items: center;
+    text-align: center;
+    background-color: #D4ECDD;
+}
+.headerItems{
+    display: flex;
+    width: 700px;
+    justify-content: space-evenly;
+    color: #112031;
+    align-items: center;
+    text-align: center;
+    background-color: #D4ECDD;
+}
+.material-icons-outlined{
+    font-size: 35px;
+}
 .menu{
     position: absolute;
-    height: 60px;
-    width: 100%;
-    padding-top: 20px;
-    padding-bottom: 10px;
-    background-color: #EEF2FF;
-    color: #1A374D;
-    justify-content: space-evenly;
-    text-align: left;
+    width: 50px;
+    padding: 10px;
+    top: 150px;
+    left: 30px;
+    background-color: #112031;
     align-items: center;
-    display: flex;
-    box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px;
+    text-align: center;
+    color: #D4ECDD;
     cursor: pointer;
     font-size:larger;
+    border-radius: 10px;
+    
+}
+.menuItems{
     animation-name: menuAni;
     animation-duration: 0.5s;
 }
@@ -35,6 +81,9 @@ body {
 .vl {
     border-left: 3px solid #406882;
     height: 50px;
+  }
+  .commonTool{
+      display: inline-block;
   }
 .stickyNotesContainer{
     position: absolute;
