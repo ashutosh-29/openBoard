@@ -18,7 +18,4 @@ io.on('connection',(socket)=>{
     socket.on('drawStroke',(data)=>{
         io.sockets.emit('drawStroke',data);
     })
-    socket.on('mouseUpDrawStroke',(data)=>{
-        io.sockets.emit('mouseUpDrawStroke',data);
-    })
 })

@@ -73,17 +73,21 @@ canvas.addEventListener('mousemove',(e)=>{
 canvas.addEventListener('mouseup',(e)=>{
     isDraw=false;
     let fX=e.clientX,fY=e.clientY;
-    let data={
-        fX:e.clientX,
-        fY:e.clientY,
-        iX:iX,
-        iY:iY,
-        redoUndoArray:redoUndoArray,
-        tracker:tracker,
-        curTool:curTool
+    if(curTool=='rect'){
+        tool.strokeRect(iX, iY-headerHeight, e.clientX-iX, e.clientY-iY);
     }
-    mouseUpDrawStroke(data);
-    
+    else if(curTool=='circ'){
+        let d=Math.sqrt(Math.pow(fX-iX,2)+Math.pow(fY-iY,2));
+        tool.arc((iX+fX)/2, (fY+iY)/2-headerHeight, d/2, 0,Math.PI * 2);
+        tool.stroke();
+    }
+    else if(curTool=='line'){
+        tool.lineTo(fX,fY-headerHeight);
+        tool.stroke();
+    }
+    let imgData=canvas.toDataURL();
+    redoUndoArray.push(imgData);
+    tracker=redoUndoArray.length-1;
 });
 document.querySelector(".undo").addEventListener('click',()=>{
     if(tracker>0)tracker--;
@@ -95,8 +99,6 @@ document.querySelector(".undo").addEventListener('click',()=>{
     socket.emit('setContent',data);
     
 });
-
-
 document.querySelector(".redo").addEventListener('click',()=>{
     if(tracker<redoUndoArray.length-1)tracker++;
     console.log("redo");
@@ -134,34 +136,12 @@ function beginPath(data){
             tool.moveTo(data.x,data.y-headerHeight);
         }
         tool.lineWidth=data.penSize;
-    }   
+    }
+    
 }
 function drawStroke(data){
     tool.lineTo(data.x,data.y-headerHeight);
     tool.stroke();
-}
-
-function mouseUpDrawStroke(data){
-    let iX=data.iX;
-    let iY=data.iY;
-    let fX=data.fX;
-    let fY=data.fY;
-    
-    if(data.curTool=='rect'){
-        tool.strokeRect(data.iX, data.iY-headerHeight, data.fX-iX, data.fY-iY);
-    }
-    else if(curTool=='circ'){
-        let d=Math.sqrt(Math.pow(fX-iX,2)+Math.pow(fY-iY,2));
-        tool.arc((iX+fX)/2, (fY+iY)/2-headerHeight, d/2, 0,Math.PI * 2);
-        tool.stroke();
-    }
-    else if(curTool=='line'){
-        tool.lineTo(fX,fY-headerHeight);
-        tool.stroke();
-    }
-    let imgData=canvas.toDataURL();
-    data.redoUndoArray.push(imgData);
-    data.tracker=redoUndoArray.length-1;
 }
 
 socket.on("beginPath",(data)=>{
@@ -172,7 +152,4 @@ socket.on("drawStroke",(data)=>{
 });
 socket.on("setContent",(data)=>{
     setContent(data);
-});
-socket.on("mouseUpDrawStroke",(data)=>{
-    mouseUpDrawStroke(data);
 });
