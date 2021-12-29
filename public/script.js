@@ -60,7 +60,6 @@ stickyNotesBtn.addEventListener("click",
             input.addEventListener('change',()=>{
                 let imgFile=input.files[0];
                 let url=URL.createObjectURL(imgFile);
-                console.log(url);
                 let div=document.createElement('div');
             div.setAttribute('class','stickyNotesContainer');
             div.innerHTML=`<div class='stickyNotesHeader'><span class='material-icons-outlined stickyMinimise'>remove_circle_outline</span><span class='material-icons-outlined stickyCross'>cancel</span></div><div class='stickyContentArea'><img src='${url}'></div>`;
