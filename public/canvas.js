@@ -59,6 +59,9 @@ canvas.addEventListener('mousedown',(e)=>{
         eraserColor:eraserColor,
         penSize:penSize
     }
+    if(curTool=='pencil'|| curTool=='eraser' || curTool=='line'){
+        if(curTool!='line')isDraw=true;
+    }
     socket.emit("beginPath",data)
 });
 canvas.addEventListener('mousemove',(e)=>{
@@ -132,7 +135,6 @@ function beginPath(data){
             tool.strokeStyle=data.eraserColor;
         }
         if(curTool=='pencil'|| curTool=='eraser' || curTool=='line'){
-            if(curTool!='line')isDraw=true;
             tool.moveTo(data.x,data.y-headerHeight);
         }
         tool.lineWidth=data.penSize;
